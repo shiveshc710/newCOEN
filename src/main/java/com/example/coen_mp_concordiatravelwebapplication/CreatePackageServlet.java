@@ -2,6 +2,8 @@ package com.example.coen_mp_concordiatravelwebapplication;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +44,21 @@ public class CreatePackageServlet extends HttpServlet {
             String arrivalString = arrivals[i];
             double flightPrice = Double.parseDouble(flightPrices[i]);
 
+
             // Convert departure and arrival strings to timestamps
-            Timestamp departure = Timestamp.valueOf(departureString);
-            Timestamp arrival = Timestamp.valueOf(arrivalString);
+            SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Timestamp departure = null;
+            try {
+                departure = new Timestamp(inputDateFormat.parse(departureString).getTime());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            Timestamp arrival = null;
+            try {
+                arrival = new Timestamp(inputDateFormat.parse(arrivalString).getTime());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
 
             Flight flight = new Flight(flightId, airline, departure, arrival, flightPrice);
             flights.add(flight);

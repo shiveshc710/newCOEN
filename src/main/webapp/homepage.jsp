@@ -21,6 +21,8 @@
       <ul>
         <li><a href="createpackage.jsp">Create a package</a></li>
         <li><a href="DisplayPackagesServlet">Display all packages</a></li>
+        <li><a href="RemovePackageDisplayServlet">Remove a package</a></li>
+        <li><a href="ModifyPackageDisplayServlet">Modify a package</a></li>
       </ul>
     </li>
     <li><a href="#">Bookings</a>
@@ -29,21 +31,6 @@
         <li><a href="#">Modify your bookings</a></li>
       </ul>
     </li>
-<%--    <li><a href="#">Clients</a>--%>
-<%--      <ul>--%>
-<%--        <li><a href="#">Lorem ipsum dolor</a></li>--%>
-<%--        <li><a href="#">Maecenas lacinia sem</a></li>--%>
-<%--        <li><a href="#">Suspendisse fringilla</a></li>--%>
-<%--      </ul>--%>
-<%--    </li>--%>
-<%--    <li><a href="#">Contact Me</a>--%>
-<%--      <ul>--%>
-<%--        <li><a href="#">Lorem ipsum dolor</a></li>--%>
-<%--        <li><a href="#">Maecenas dignissim fermentum luctus</a></li>--%>
-<%--        <li><a href="#">Suspendisse fringilla</a></li>--%>
-<%--      </ul>--%>
-<%--    </li>--%>
-<%--    <li><a href="#">Support</a></li>--%>
   </ul>
 </div>
 
