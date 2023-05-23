@@ -37,6 +37,11 @@
                 <li><a href="#">Modify your bookings</a></li>
             </ul>
         </li>
+        <li><a href="#">Customer</a>
+            <ul>
+                <li><a href="addcustomer.jsp">Add a Customer</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 
