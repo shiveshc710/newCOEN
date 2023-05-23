@@ -112,4 +112,115 @@ public class ModifyPackageDisplayServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        // JDBC connection details
+        String url = CONFIG.SQLURL;
+        String username = CONFIG.SQLUSER;
+        String password = CONFIG.SQLPASS;
+
+        // Retrieve the package ID to modify from the request
+        String packageIdToModify = request.getParameter("packageId");
+
+        // Create a travel package object to store the retrieved package and related information
+        TravelPackage travelPackage = null;
+
+        // Establish a connection to the database
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            // Create a prepared statement to retrieve the package information
+            String query = "SELECT * FROM travel_package WHERE package_id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, packageIdToModify);
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if a package with the given ID exists
+            if (resultSet.next()) {
+                // Retrieve the package details from the result set
+                String packageId = resultSet.getString("package_id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                double price = resultSet.getDouble("price");
+
+                // Create a travel package object
+                travelPackage = new TravelPackage(packageId, name, description, price,
+                        new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+
+                // Retrieve flights associated with the package
+                query = "SELECT * FROM flight INNER JOIN package_flight ON flight.flight_id = package_flight.flight_id " +
+                        "WHERE package_flight.package_id = ?";
+                statement = connection.prepareStatement(query);
+                statement.setString(1, packageIdToModify);
+                resultSet = statement.executeQuery();
+
+                // Process the flights and add them to the travel package
+                while (resultSet.next()) {
+                    // Retrieve flight details
+                    String flightId = resultSet.getString("flight_id");
+                    String airline = resultSet.getString("airline");
+                    Timestamp departure = resultSet.getTimestamp("departure");
+                    Timestamp arrival = resultSet.getTimestamp("arrival");
+                    double flightPrice = resultSet.getDouble("price");
+
+                    // Create a Flight object
+                    Flight flight = new Flight(flightId, airline, departure, arrival, flightPrice);
+                    travelPackage.addFlight(flight);
+                }
+
+                // Retrieve hotels associated with the package
+                query = "SELECT * FROM hotel INNER JOIN package_hotel ON hotel.hotel_id = package_hotel.hotel_id " +
+                        "WHERE package_hotel.package_id = ?";
+                statement = connection.prepareStatement(query);
+                statement.setString(1, packageIdToModify);
+                resultSet = statement.executeQuery();
+
+                // Process the hotels and add them to the travel package
+                while (resultSet.next()) {
+                    // Retrieve hotel details
+                    String hotelId = resultSet.getString("hotel_id");
+                    String hotelName = resultSet.getString("name");
+                    String location = resultSet.getString("location");
+                    double hotelPrice = resultSet.getDouble("price");
+
+                    // Create a Hotel object
+                    Hotel hotel = new Hotel(hotelId, hotelName, location, hotelPrice);
+                    travelPackage.addHotel(hotel);
+                }
+
+                // Retrieve activities associated with the package
+                query = "SELECT * FROM activity INNER JOIN package_activity ON activity.activity_id = package_activity.activity_id " +
+                        "WHERE package_activity.package_id = ?";
+                statement = connection.prepareStatement(query);
+                statement.setString(1, packageIdToModify);
+                resultSet = statement.executeQuery();
+
+                // Process the activities and add them to the travel package
+                while (resultSet.next()) {
+                    // Retrieve activity details
+                    String activityId = resultSet.getString("activity_id");
+                    String activityName = resultSet.getString("name");
+                    String activityDescription = resultSet.getString("description");
+                    double activityPrice = resultSet.getDouble("price");
+
+                    // Create an Activity object
+                    Activity activity = new Activity(activityId, activityName, activityDescription, activityPrice);
+                    travelPackage.addActivity(activity);
+                }
+            }
+
+            // Close the result set and statement
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Set the travel package as a request attribute
+        request.setAttribute("travelPackage", travelPackage);
+
+        // Forward the request to the JSP page for displaying the editable form
+        request.getRequestDispatcher("modifypackageform.jsp").forward(request, response);
+    }
 }
