@@ -1,8 +1,8 @@
 package com.example.coen_mp_concordiatravelwebapplication;
 
 import com.example.coen_mp_concordiatravelwebapplication.config.CONFIG;
-import com.example.coen_mp_concordiatravelwebapplication.models.packageModels.Bookings;
-import com.example.coen_mp_concordiatravelwebapplication.models.packageModels.Customer;
+import com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Bookings;
+import com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Customer;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.ObjectInputFilter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

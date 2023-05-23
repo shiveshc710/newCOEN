@@ -2,11 +2,11 @@ package com.example.coen_mp_concordiatravelwebapplication;
 
 import java.io.IOException;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Bookings;
+import com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Customer;
 import com.example.coen_mp_concordiatravelwebapplication.models.packageModels.*;
 
 import jakarta.servlet.ServletException;

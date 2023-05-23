@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.packageModels.Bookings" %>
-<%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.packageModels.Customer" %><%--
+<%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Bookings" %>
+<%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Customer" %><%--
   Created by IntelliJ IDEA.
   User: shive
   Date: 2023-05-22

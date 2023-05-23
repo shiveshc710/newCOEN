@@ -1,4 +1,4 @@
-package com.example.coen_mp_concordiatravelwebapplication.models.packageModels;
+package com.example.coen_mp_concordiatravelwebapplication.models.bookingModels;
 
 import java.sql.Timestamp;
 
