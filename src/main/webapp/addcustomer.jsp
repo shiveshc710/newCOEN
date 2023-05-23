@@ -46,7 +46,7 @@
 </div>
 
 <div id="add-customer-container">
-    <h1>Add Customer</h1>
+    <h2>Add Customer</h2>
     <form action="AddCustomerServlet" method="post">
         <div class="form-group">
             <label for="customerId">Customer ID:</label>

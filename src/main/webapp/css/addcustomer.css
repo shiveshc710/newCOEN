@@ -219,3 +219,15 @@ h1:before {
 .form-group button:hover {
     background-color: #555;
 }
+#add-customer-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#add-customer-container h2 {
+    margin-bottom: 20px;
+}
+
+#add-customer-container .form-group {
+    margin-bottom: 15px;
+}
