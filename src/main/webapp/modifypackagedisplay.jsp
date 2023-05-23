@@ -9,10 +9,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Modify Travel Package</title>
-  <link rel="stylesheet" type="text/css" href="css/displaypackage.css">
+  <link rel="stylesheet" type="text/css" href="css/modifypackagedisplay.css">
 </head>
 <body>
-<h1>Modify Travel Package</h1>
+<div id="logo-container">
+  <img src="images/travel%20logo%202.jpg" alt="Logo" id="logo">
+</div>
+
+<h1>Travel Packages</h1>
+
+<div id="container">
+  <ul id="menu">
+    <li><a href="homepage.jsp">Home</a></li>
+    <li><a href="#">Packages</a>
+      <ul>
+        <li><a href="createpackage.jsp">Create a package</a></li>
+        <li><a href="DisplayPackagesServlet">Display all packages</a></li>
+        <li><a href="RemovePackageDisplayServlet">Remove a package</a></li>
+        <li><a href="ModifyPackageDisplayServlet">Modify a package</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Bookings</a>
+      <ul>
+        <li><a href="BookPackageServlet">Book a Package</a></li>
+        <li><a href="CustomerBookingsServlet">View your bookings</a></li>
+        <li><a href="#">Modify your bookings</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Customer</a>
+      <ul>
+        <li><a href="addcustomer.jsp">Add a Customer</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<h2>Modify Travel Package</h2>
 
 <form action="ModifyPackageDisplayServlet" method="post">
   <label for="packageId">Enter the Package ID to modify:</label>
