@@ -176,26 +176,66 @@ h1:before {
 }
 
 /*Add the css for update fields and button*/
- .update-field {
-     width: 100%;
-     padding: 8px;
-     margin-bottom: 10px;
-     border: 1px solid #ccc;
-     border-radius: 4px;
-     box-sizing: border-box;
- }
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-/* Update Buttons */
-.update-button {
-    background-color: #4CAF50;
-    color: white;
+.form-field {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-field:focus {
+    outline: none;
+    border-color: #8c9eff;
+    box-shadow: 0 0 5px #8c9eff;
+}
+
+textarea.form-field {
+    height: 100px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-button {
+    display: inline-block;
     padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4caf50;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.update-button:hover {
+.form-button:hover {
     background-color: #45a049;
 }
+
+.form-button:active {
+    background-color: #3e8e41;
+}
+

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="css/homepage.css">
+  <link rel="stylesheet" type="text/css" href="css/modifypackage.css">
   <title>Modify Package Form</title>
 </head>
 <body>
@@ -50,59 +50,71 @@
   TravelPackage selectedPackage = (TravelPackage) request.getAttribute("travelPackage");
 %>
 
-<form action="ModifyPackageServlet" method="POST">
-  <input type="text" name="packageId" value="<%= selectedPackage.getPackageId() %>" disabled>
+<div class="form-container">
+  <form action="ModifyPackageServlet" method="POST">
+    <input type="text" name="packageId" value="<%= selectedPackage.getPackageId() %>" disabled class="form-field">
+    <label for="name">Package Name:</label>
+    <input type="text" id="name" name="name" value="<%= selectedPackage.getName() %>" class="form-field">
 
-  <label for="name">Package Name:</label>
-  <input type="text" id="name" name="name" value="<%= selectedPackage.getName() %>">
+    <label for="description">Package Description:</label>
+    <textarea id="description" name="description" class="form-field"><%= selectedPackage.getDescription() %></textarea>
 
-  <label for="description">Package Description:</label>
-  <textarea id="description" name="description"><%= selectedPackage.getDescription() %></textarea>
+    <label for="price">Package Price:</label>
+    <input type="number" id="price" name="price" value="<%= selectedPackage.getPrice() %>" class="form-field">
 
-  <label for="price">Package Price:</label>
-  <input type="number" id="price" name="price" value="<%= selectedPackage.getPrice() %>">
+    <h2>Flights:</h2>
+    <ul>
+      <% for (Flight flight : selectedPackage.getFlights()) { %>
+      <li>
+        <label for="flight<%= flight.getFlightId() %>">Flight:</label>
+        <input type="text" id="flight<%= flight.getFlightId() %>" name="flights" value="<%= flight.getFlightId() %>" disabled class="form-field">
+        <label for="airline<%= flight.getFlightId() %>">Airline:</label>
+        <input type="text" name="airlines<%= flight.getFlightId() %>" value="<%= flight.getAirline() %>" class="form-field">
+        <label for="departure<%= flight.getFlightId() %>">Departure:</label>
+        <input type="datetime-local" name="departures<%= flight.getFlightId() %>" value="<%= flight.getDeparture() %>" class="form-field">
+        <label for="arrival<%= flight.getFlightId() %>">Arrival:</label>
+        <input type="datetime-local" name="arrivals<%= flight.getFlightId() %>" value="<%= flight.getArrival() %>" class="form-field">
+        <label for="flightPrice<%= flight.getFlightId() %>">Price:</label>
+        <input type="text" name="prices<%= flight.getFlightId() %>" value="<%= flight.getPrice() %>" class="form-field">
+      </li>
+      <% } %>
+    </ul>
 
-  <h2>Flights:</h2>
-  <ul>
-    <% for (Flight flight : selectedPackage.getFlights()) { %>
-    <li>
-      <label for="flight<%= flight.getFlightId() %>">Flight:</label>
-      <input type="text" id="flight<%= flight.getFlightId() %>" name="flights" value="<%= flight.getFlightId() %>" disabled>
-      <input type="text" name="airlines" value="<%= flight.getAirline() %>">
-      <input type="text" name="departures" value="<%= flight.getDeparture() %>">
-      <input type="text" name="arrivals" value="<%= flight.getArrival() %>">
-      <input type="text" name="prices" value="<%= flight.getPrice() %>">
-    </li>
-    <% } %>
-  </ul>
+    <h2>Hotels:</h2>
+    <ul>
+      <% for (Hotel hotel : selectedPackage.getHotels()) { %>
+      <li>
+        <label for="hotel<%= hotel.getHotelId() %>">Hotel:</label>
+        <input type="text" id="hotel<%= hotel.getHotelId() %>" name="hotels" value="<%= hotel.getHotelId() %>" disabled class="form-field">
+        <label for="hotelName<%= hotel.getHotelId() %>">Name:</label>
+        <input type="text" name="hotelNames<%= hotel.getHotelId() %>" value="<%= hotel.getName() %>" class="form-field">
+        <label for="location<%= hotel.getHotelId() %>">Location:</label>
+        <input type="text" name="locations<%= hotel.getHotelId() %>" value="<%= hotel.getLocation() %>" class="form-field">
+        <label for="hotelPrice<%= hotel.getHotelId() %>">Price:</label>
+        <input type="text" name="hotelPrices<%= hotel.getHotelId() %>" value="<%= hotel.getPrice() %>" class="form-field">
+      </li>
+      <% } %>
+    </ul>
 
-  <h2>Hotels:</h2>
-  <ul>
-    <% for (Hotel hotel : selectedPackage.getHotels()) { %>
-    <li>
-      <label for="hotel<%= hotel.getHotelId() %>">Hotel:</label>
-      <input type="text" id="hotel<%= hotel.getHotelId() %>" name="hotels" value="<%= hotel.getHotelId() %>" disabled>
-      <input type="text" name="hotelNames" value="<%= hotel.getName() %>">
-      <input type="text" name="locations" value="<%= hotel.getLocation() %>">
-      <input type="text" name="hotelPrices" value="<%= hotel.getPrice() %>">
-    </li>
-    <% } %>
-  </ul>
+    <h2>Activities:</h2>
+    <ul>
+      <% for (Activity activity : selectedPackage.getActivities()) { %>
+      <li>
+        <label for="activity<%= activity.getActivityId() %>">Activity:</label>
+        <input type="text" id="activity<%= activity.getActivityId() %>" name="activities" value="<%= activity.getActivityId() %>" disabled class="form-field">
+        <label for="activityName<%= activity.getActivityId() %>">Name:</label>
+        <input type="text" name="activityNames<%= activity.getActivityId() %>" value="<%= activity.getName() %>" class="form-field">
+        <label for="activityDescription<%= activity.getActivityId() %>">Description:</label>
+        <input type="text" name="descriptions<%= activity.getActivityId() %>" value="<%= activity.getDescription() %>" class="form-field">
+        <label for="activityPrice<%= activity.getActivityId() %>">Price:</label>
+        <input type="text" name="activityPrices<%= activity.getActivityId() %>" value="<%= activity.getPrice() %>" class="form-field">
+      </li>
+      <% } %>
+    </ul>
 
-  <h2>Activities:</h2>
-  <ul>
-    <% for (Activity activity : selectedPackage.getActivities()) { %>
-    <li>
-      <label for="activity<%= activity.getActivityId() %>">Activity:</label>
-      <input type="text" id="activity<%= activity.getActivityId() %>" name="activities" value="<%= activity.getActivityId() %>" disabled>
-      <input type="text" name="activityNames" value="<%= activity.getName() %>">
-      <input type="text" name="descriptions" value="<%= activity.getDescription() %>">
-      <input type="text" name="activityPrices" value="<%= activity.getPrice() %>">
-    </li>
-    <% } %>
-  </ul>
+    <input type="submit" value="Save Changes" class="form-button">
+  </form>
 
-  <input type="submit" value="Save Changes">
-</form>
+</div>
 </body>
 </html>
