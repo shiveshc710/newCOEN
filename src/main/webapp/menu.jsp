@@ -32,6 +32,7 @@
       <ul>
         <li><a href="BookPackageServlet">Book a Package</a></li>
         <li><a href="CustomerBookingsServlet">View your bookings</a></li>
+        <li><a href="ModifyBookingServlet">Modify your bookings</a></li>
         <li><a href="CancelBookingServlet">Cancel your bookings</a></li>
       </ul>
     </li>

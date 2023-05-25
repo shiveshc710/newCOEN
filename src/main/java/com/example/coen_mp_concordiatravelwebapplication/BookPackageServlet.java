@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.example.coen_mp_concordiatravelwebapplication.config.CONFIG;
 
 @WebServlet(name = "BookPackageServlet", value = "/BookPackageServlet")
-public class BookPackage extends HttpServlet {
+public class BookPackageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
@@ -126,8 +126,14 @@ public class BookPackage extends HttpServlet {
             request.setAttribute("travelPackages", travelPackages);
             request.setAttribute("customers", customers);
 
-            // Forward the request to the JSP page
-            request.getRequestDispatcher("bookapackage.jsp").forward(request, response);
+
+            String condition = request.getParameter("condition");
+            if (condition != null && condition.equals("Modify")) {
+                request.getRequestDispatcher("updatebooking.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("bookapackage.jsp").forward(request, response);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
