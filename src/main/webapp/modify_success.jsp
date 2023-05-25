@@ -5,9 +5,7 @@
   <title>Package Modified Successfully</title>
 </head>
 <body>
-<div id="logo-container">
-  <img src="images/travel%20logo%202.jpg" alt="Logo" id="logo">
-</div>
+<jsp:include page="menu.jsp" />
 
 <h1>Package Modified Successfully</h1>
 

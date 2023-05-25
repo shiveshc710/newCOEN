@@ -1,19 +1,16 @@
+<%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Customer" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Bookings" %>
-<%@ page import="com.example.coen_mp_concordiatravelwebapplication.models.bookingModels.Customer" %><%--
-  Created by IntelliJ IDEA.
-  User: shive
-  Date: 2023-05-22
-  Time: 4:35 p.m.
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="css/showbookings.css">
-  <title>Customer Bookings</title>
+  <title>Cancel Booking</title>
 </head>
 <body>
+
 <jsp:include page="menu.jsp" />
 
 <h2>Customer Bookings</h2>
@@ -29,13 +26,11 @@
     <% }
     } %>
   </select>
-  <input type="hidden" name="condition" value="View">
+  <input type="hidden" name="condition" value="Cancel">
   <input type="submit" value="Get Customer Bookings">
 </form>
 
 <hr>
-
-
 
 <% String selectedCustomer = (String) request.getAttribute("selectedCustomer");
   if (selectedCustomer != null) { %>
@@ -51,6 +46,7 @@
       <th>Booking ID</th>
       <th>Package ID</th>
       <th>Departure Date</th>
+      <th>Action</th> <!-- Added column for cancellation action -->
     </tr>
     </thead>
     <tbody>
@@ -59,6 +55,13 @@
       <td><%= booking.getBookingId() %></td>
       <td><%= booking.getPackageId() %></td>
       <td><%= booking.getDepartureDate() %></td>
+      <td>
+        <form action="CancelBookingServlet" method="POST">
+          <input type="hidden" name="bookingId" value="<%= booking.getBookingId() %>">
+          <input type="hidden" name="customerId" value="<%= booking.getCustomerId() %>">
+          <input type="submit" value="Cancel Booking" class="cancel-booking-button">
+        </form>
+      </td>
     </tr>
     <% } %>
     </tbody>
@@ -67,8 +70,5 @@
 <% } else { %>
 <p>No bookings found for the selected customer.</p>
 <% } %>
-
-
-
 </body>
 </html>

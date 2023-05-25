@@ -11,6 +11,8 @@
   <title>Search Packages</title>
 </head>
 <body>
+<jsp:include page="menu.jsp" />
+
 <h1>Search Packages by Location</h1>
 <form action="SearchLocationServlet" method="GET">
   <label for="location">Location:</label>
