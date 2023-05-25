@@ -203,6 +203,4 @@ public class BookPackage extends HttpServlet {
 
         return bookingId;
     }
-
-
 }

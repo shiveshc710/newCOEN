@@ -68,7 +68,6 @@
       <li>
         <label for="flight<%= flight.getFlightId() %>">Flight:</label>
         <input type="text" id="flight<%= flight.getFlightId() %>" name="flights" value="<%= flight.getFlightId() %>" readonly class="form-field">
-        <!-- Use the "readonly" attribute instead of "disabled" -->
         <label for="airline<%= flight.getFlightId() %>">Airline:</label>
         <input type="text" name="airlines" value="<%= flight.getAirline() %>" class="form-field">
         <label for="departure<%= flight.getFlightId() %>">Departure:</label>
@@ -80,14 +79,12 @@
       </li>
       <% } %>
     </ul>
-    ...
     <h2>Hotels:</h2>
     <ul>
       <% for (Hotel hotel : selectedPackage.getHotels()) { %>
       <li>
         <label for="hotel<%= hotel.getHotelId() %>">Hotel:</label>
         <input type="text" id="hotel<%= hotel.getHotelId() %>" name="hotels" value="<%= hotel.getHotelId() %>" readonly class="form-field">
-        <!-- Use the "readonly" attribute instead of "disabled" -->
         <label for="hotelName<%= hotel.getHotelId() %>">Name:</label>
         <input type="text" name="hotelNames" value="<%= hotel.getName() %>" class="form-field">
         <label for="location<%= hotel.getHotelId() %>">Location:</label>
@@ -97,14 +94,12 @@
       </li>
       <% } %>
     </ul>
-    ...
     <h2>Activities:</h2>
     <ul>
       <% for (Activity activity : selectedPackage.getActivities()) { %>
       <li>
         <label for="activity<%= activity.getActivityId() %>">Activity:</label>
         <input type="text" id="activity<%= activity.getActivityId() %>" name="activities" value="<%= activity.getActivityId() %>" readonly class="form-field">
-        <!-- Use the "readonly" attribute instead of "disabled" -->
         <label for="activityName<%= activity.getActivityId() %>">Name:</label>
         <input type="text" name="activityNames" value="<%= activity.getName() %>" class="form-field">
         <label for="activityDescription<%= activity.getActivityId() %>">Description:</label>

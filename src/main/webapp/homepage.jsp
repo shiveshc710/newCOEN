@@ -37,6 +37,12 @@
         <li><a href="addcustomer.jsp">Add a Customer</a></li>
       </ul>
     </li>
+    <li><a href="#">Search</a>
+      <ul>
+        <li><a href="searchlocation.jsp">Search by Location</a></li>
+        <li><a href="searchprice.jsp">Search by Price</a></li>
+      </ul>
+    </li>
   </ul>
 </div>
 
