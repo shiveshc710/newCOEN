@@ -43,6 +43,9 @@ jobs:
         with:
           name: java-app
 
+      - name: Set Connection String
+        run: echo "CONNECTION_STRING=${{ secrets.AZURE_SQL_CONNECTION_STRING }}" >> $GITHUB_ENV
+        
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -51,4 +54,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_79B19B0B203F4F24B9D7C0FEE8EA22BC }}
           package: '*.war'
-          connection-strings: '${{ secrets.AZURE_SQL_CONNECTION_STRING }}'
