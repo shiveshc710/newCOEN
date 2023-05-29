@@ -51,3 +51,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E6D008D5971449EB86386AE9E9602E20 }}
           package: '*.war'
+          connection-strings: '${{ secrets.AZURE_SQL_CONNECTION_STRING }}'
