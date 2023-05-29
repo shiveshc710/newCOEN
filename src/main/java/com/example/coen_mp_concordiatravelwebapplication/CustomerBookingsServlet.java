@@ -64,7 +64,7 @@ public class CustomerBookingsServlet extends HttpServlet {
         if (condition != null && condition.equals("Cancel")) {
             request.getRequestDispatcher("cancelbooking.jsp").forward(request, response);
         }
-        else if(condition.equals("Modify")){
+        else if(condition != null && condition.equals("Modify")){
             request.getRequestDispatcher("modifybooking.jsp").forward(request, response);
         }
         else {
