@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Define a data source -->
+    <Resource name="jdbc/myDataSource" auth="Container" type="javax.sql.DataSource"
+        username="your-username" password="your-password" driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://hostname:port/database" maxTotal="20" maxIdle="10" />
+
+    <!-- Set an environment variable -->
+    <Environment name="myEnvVariable" value="my-value" type="java.lang.String" override="false" />
+
+    <!-- Configure session persistence -->
+    <Manager pathname="" />
+
+    <!-- Set a context parameter -->
+    <Parameter name="myContextParam" value="my-value" override="false" />
+
+    <!-- Enable JNDI resource injection -->
+    <ResourceLink name="jdbc/myDataSource" global="jdbc/myDataSource" type="javax.sql.DataSource" />
+</Context>
