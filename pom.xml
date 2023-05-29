@@ -15,6 +15,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
         <junit.version>5.9.1</junit.version>
+        <azure.sql.connection>${env.AZURE_SQL_CONNECTION_STRING}</azure.sql.connection>
     </properties>
 
     <dependencies>
@@ -24,10 +25,11 @@
             <version>9.1.0</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>8.0.33</version>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>9.4.0.jre11</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
